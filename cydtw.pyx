@@ -10,7 +10,7 @@ ctypedef numpy.float_t DTYPE_t
 cimport cython
 @cython.boundscheck(False) # turn off bounds-checking for entire function
 @cython.wraparound(False)  # turn off negative index wrapping for entire function
-def dtw_sq(numpy.ndarray[DTYPE_t, ndim=2] s1, numpy.ndarray[DTYPE_t, ndim=2] s2):
+def dtw(numpy.ndarray[DTYPE_t, ndim=2] s1, numpy.ndarray[DTYPE_t, ndim=2] s2):
     assert s1.dtype == DTYPE and s2.dtype == DTYPE
     # The "cdef" keyword is also used within functions to type variables. It
     # can only be used at the top indentation level (there are non-trivial

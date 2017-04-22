@@ -4,7 +4,7 @@ from scipy.spatial.distance import cdist
 __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
 
 
-def dtw_sq(s1, s2):
+def dtw(s1, s2):
     cross_dist = cdist(s1.reshape((-1, 1)), s2.reshape((-1, 1)), "sqeuclidean")
     l1 = s1.shape[0]
     l2 = s2.shape[0]
