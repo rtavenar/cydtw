@@ -11,6 +11,10 @@ cimport cython
 @cython.boundscheck(False) # turn off bounds-checking for entire function
 @cython.wraparound(False)  # turn off negative index wrapping for entire function
 def dtw(numpy.ndarray[DTYPE_t, ndim=2] s1, numpy.ndarray[DTYPE_t, ndim=2] s2):
+    """dtw(s1, s2)
+    Compute DTW similarity measure between (possibly multidimensional) time series.
+    Time series must be 2d numpy arrays of shape (size, dim). It is not required that both time series share the same
+    length, but they must be the same dimension. dtype of the arrays must be numpy.float."""
     assert s1.dtype == DTYPE and s2.dtype == DTYPE
     # The "cdef" keyword is also used within functions to type variables. It
     # can only be used at the top indentation level (there are non-trivial
