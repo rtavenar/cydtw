@@ -2,7 +2,7 @@ import time
 import numpy
 
 from dtw_ref import dtw as dtw_slow
-from cydtw import dtw
+from cydtw import dtw, dtw_path
 
 __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
 
@@ -10,6 +10,10 @@ n_pairs, sz = 20, 300
 numpy.random.seed(0)
 data1 = numpy.random.randn(n_pairs, sz, 1).astype(numpy.float)
 data2 = numpy.random.randn(n_pairs, sz, 1).astype(numpy.float)
+
+print("Example path returned by DTW")
+path, d = dtw_path(data1[0], data2[0])
+print(path)
 
 t0 = time.time()
 for i in range(n_pairs):
