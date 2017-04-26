@@ -4,7 +4,7 @@ import numpy
 
 setup(
     name="cydtw",
-    description = "DTW computation made efficient using Cython",
+    description="DTW computation made efficient using Cython",
     ext_modules=cythonize("cydtw.pyx"),
     include_dirs=[numpy.get_include()],
     install_requires=['Cython', 'numpy', 'scipy'],

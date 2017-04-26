@@ -2,18 +2,19 @@ import numpy
 from scipy.spatial.distance import cdist
 
 cimport numpy
+cimport cython
+
 DTYPE = numpy.float
 ctypedef numpy.float_t DTYPE_t
 # "def" can type its arguments but not have a return type. The type of the
 # arguments for a "def" function is checked at run-time when entering the
 # function.
-cimport cython
 
 @cython.boundscheck(False) # turn off bounds-checking for entire function
 @cython.wraparound(False)  # turn off negative index wrapping for entire function
 def dtw_path(numpy.ndarray[DTYPE_t, ndim=2] s1, numpy.ndarray[DTYPE_t, ndim=2] s2):
-    """dtw_path(s1, s2)
-    Compute DTW similarity measure between (possibly multidimensional) time series and return the path and the similarity.
+    """path, sim = dtw_path(s1, s2)
+    Compute DTW similarity measure between (possibly multidimensional) time series and return both the path and the similarity.
     Time series must be 2d numpy arrays of shape (size, dim). It is not required that both time series share the same
     length, but they must be the same dimension. dtype of the arrays must be numpy.float."""
     assert s1.dtype == DTYPE and s2.dtype == DTYPE
@@ -69,8 +70,8 @@ def dtw_path(numpy.ndarray[DTYPE_t, ndim=2] s1, numpy.ndarray[DTYPE_t, ndim=2] s
 @cython.boundscheck(False) # turn off bounds-checking for entire function
 @cython.wraparound(False)  # turn off negative index wrapping for entire function
 def dtw(numpy.ndarray[DTYPE_t, ndim=2] s1, numpy.ndarray[DTYPE_t, ndim=2] s2):
-    """dtw(s1, s2)
-    Compute DTW similarity measure between (possibly multidimensional) time series and return the similarity.
+    """sim = dtw(s1, s2)
+    Compute DTW similarity measure between (possibly multidimensional) time series and return it.
     Time series must be 2d numpy arrays of shape (size, dim). It is not required that both time series share the same
     length, but they must be the same dimension. dtype of the arrays must be numpy.float."""
     assert s1.dtype == DTYPE and s2.dtype == DTYPE
